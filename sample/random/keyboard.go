@@ -1,12 +1,13 @@
 package random
 
 import (
-	pc "github.com/leegeobuk/go-gRPC/pb"
 	"math/rand"
+
+	"github.com/leegeobuk/go-gRPC/pb/pc"
 )
 
-// RandomKeyboardLayout returns one of keyboard layout
-func RandomKeyboardLayout() pc.Keyboard_Layout {
+// KeyboardLayout returns one of keyboard layout
+func KeyboardLayout() pc.Keyboard_Layout {
 	switch rand.Intn(3) {
 	case 1:
 		return pc.Keyboard_QWERTY
@@ -17,7 +18,7 @@ func RandomKeyboardLayout() pc.Keyboard_Layout {
 	}
 }
 
-// RandomBool returns either true or false with random possibility
-func RandomBool() bool {
+// Bool returns either true or false with random possibility
+func Bool() bool {
 	return rand.Intn(2) == 1
 }
