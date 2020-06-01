@@ -1,6 +1,9 @@
 package sample
 
 import (
+	"math/rand"
+	"time"
+
 	"github.com/golang/protobuf/ptypes"
 	"github.com/google/uuid"
 	"github.com/leegeobuk/go-gRPC/pb/pc"
@@ -8,11 +11,29 @@ import (
 	"github.com/leegeobuk/go-gRPC/sample/random"
 )
 
-// NewKeyboard returns new sample keyboard
-func NewKeyboard() *pc.Keyboard {
-	return &pc.Keyboard{
-		Layout:  random.KeyboardLayout(),
-		Backlit: random.Bool(),
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
+// NewLaptop returns a new sample laptop
+func NewLaptop() *pc.Laptop {
+	brand := random.LaptopBrand()
+	return &pc.Laptop{
+		Id:       uuid.New().String(),
+		Brand:    brand,
+		Name:     random.LaptopName(brand),
+		Cpu:      NewCPU(),
+		Ram:      NewRAM(),
+		Gpus:     []*pc.GPU{NewGPU()},
+		Storages: []*pc.Storage{NewSSD(), NewHDD()},
+		Screen:   NewScreen(),
+		Keyboard: NewKeyboard(),
+		Weight: &pc.Laptop_WeightKg{
+			WeightKg: random.Float(1.0, 3.0),
+		},
+		PriceUsd:    random.Float(1500, 3000),
+		ReleaseYear: uint32(random.Integer(2015, 2019)),
+		UpdatedAt:   ptypes.TimestampNow(),
 	}
 }
 
@@ -89,24 +110,10 @@ func NewScreen() *pc.Screen {
 	}
 }
 
-// NewLaptop returns a new sample laptop
-func NewLaptop() *pc.Laptop {
-	brand := random.LaptopBrand()
-	return &pc.Laptop{
-		Id:       uuid.New().String(),
-		Brand:    brand,
-		Name:     random.LaptopName(brand),
-		Cpu:      NewCPU(),
-		Ram:      NewRAM(),
-		Gpus:     []*pc.GPU{NewGPU()},
-		Storages: []*pc.Storage{NewSSD(), NewHDD()},
-		Screen:   NewScreen(),
-		Keyboard: NewKeyboard(),
-		Weight: &pc.Laptop_WeightKg{
-			WeightKg: random.Float(1.0, 3.0),
-		},
-		PriceUsd:    random.Float(1500, 3000),
-		ReleaseYear: uint32(random.Integer(2015, 2019)),
-		UpdatedAt:   ptypes.TimestampNow(),
+// NewKeyboard returns new sample keyboard
+func NewKeyboard() *pc.Keyboard {
+	return &pc.Keyboard{
+		Layout:  random.KeyboardLayout(),
+		Backlit: random.Bool(),
 	}
 }
