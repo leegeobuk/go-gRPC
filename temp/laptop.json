@@ -1,27 +1,27 @@
 {
- "id": "0381ce44-a3db-402e-9b0e-aacd968b6d25",
- "brand": "Apple",
- "name": "Macbook Pro",
+ "id": "50320762-0756-4c8d-b48e-c29c7f332382",
+ "brand": "Dell",
+ "name": "Latitude",
  "cpu": {
-  "brand": "AMD",
-  "name": "Ryzen 7 PRO 2700U",
-  "cores": 5,
-  "threads": 7,
-  "min_ghz": 3.4556203380507577,
-  "max_ghz": 3.493051369634861
+  "brand": "Intel",
+  "name": "Core i9-9980HK",
+  "cores": 7,
+  "threads": 12,
+  "min_ghz": 2.5597784715848584,
+  "max_ghz": 4.514285223640506
  },
  "ram": {
-  "value": "48",
+  "value": "9",
   "unit": "GIGABYTE"
  },
  "gpus": [
   {
    "brand": "AMD",
    "name": "RX 590",
-   "min_ghz": 1.2051169595482791,
-   "max_ghz": 1.5372458977541346,
+   "min_ghz": 1.3156500924792671,
+   "max_ghz": 1.4126787329141317,
    "memory": {
-    "value": "5",
+    "value": "6",
     "unit": "GIGABYTE"
    }
   }
@@ -30,33 +30,33 @@
   {
    "driver": "SDD",
    "memory": {
-    "value": "975",
+    "value": "947",
     "unit": "GIGABYTE"
    }
   },
   {
    "driver": "HDD",
    "memory": {
-    "value": "5",
+    "value": "2",
     "unit": "TERABYTE"
    }
   }
  ],
  "screen": {
-  "size_inch": 16.813383,
+  "size_inch": 14.690443,
   "resolution": {
-   "width": 3020,
-   "height": 1699
+   "width": 5361,
+   "height": 3016
   },
-  "panel": "IPS",
+  "panel": "OLED",
   "multitouch": true
  },
  "keyboard": {
-  "layout": "QWERTZ",
-  "backlit": false
+  "layout": "AZERTY",
+  "backlit": true
  },
- "weight_kg": 2.7872111151134726,
- "price_usd": 1783.0186913934976,
- "release_year": 2017,
- "updated_at": "2020-06-01T10:16:45.093680300Z"
+ "weight_kg": 2.193298534298197,
+ "price_usd": 2823.551196799225,
+ "release_year": 2019,
+ "updated_at": "2020-06-04T17:37:16.027597Z"
 }
