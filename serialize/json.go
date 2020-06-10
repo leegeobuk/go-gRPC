@@ -11,14 +11,17 @@ import (
 // ToJSON writes protocol buffer message to binary file
 func ToJSON(m proto.Message, filename string) error {
 	data, err := convertToJSON(m)
+
 	if err != nil {
 		return fmt.Errorf("cannot marshal proto message jo JSON: %w", err)
 	}
 
 	err = ioutil.WriteFile(filename, []byte(data), 0644)
+
 	if err != nil {
 		return fmt.Errorf("cannot write data to binary file: %w", err)
 	}
+
 	return nil
 }
 
