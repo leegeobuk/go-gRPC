@@ -3,10 +3,10 @@ package serialize
 import (
 	"testing"
 
+	"github.com/golang/protobuf/proto"
 	"github.com/leegeobuk/go-gRPC/pb/pc"
 	"github.com/leegeobuk/go-gRPC/sample"
 	"github.com/stretchr/testify/require"
-	"google.golang.org/protobuf/proto"
 )
 
 func TestBinary(t *testing.T) {
