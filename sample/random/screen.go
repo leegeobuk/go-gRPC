@@ -3,7 +3,7 @@ package random
 import (
 	"math/rand"
 
-	"github.com/leegeobuk/go-gRPC/pb/pc"
+	"github.com/leegeobuk/go-gRPC/proto/pc"
 )
 
 // Resolution returns random resolution

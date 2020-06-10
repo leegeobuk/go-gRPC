@@ -6,7 +6,7 @@ import (
 
 	"github.com/golang/protobuf/ptypes"
 	"github.com/google/uuid"
-	"github.com/leegeobuk/go-gRPC/pb/pc"
+	"github.com/leegeobuk/go-gRPC/proto/pc"
 
 	"github.com/leegeobuk/go-gRPC/sample/random"
 )
