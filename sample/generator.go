@@ -19,7 +19,7 @@ func init() {
 func NewLaptop() *pc.Laptop {
 	brand := random.LaptopBrand()
 	return &pc.Laptop{
-		Id:       uuid.New().String(),
+		ID:       uuid.New().String(),
 		Brand:    brand,
 		Name:     random.LaptopName(brand),
 		Cpu:      NewCPU(),
