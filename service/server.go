@@ -17,18 +17,18 @@ type LaptopServer struct {
 }
 
 // NewLaptopServer returns a new LaptopServer
-func NewLaptopServer() *LaptopServer {
-	return &LaptopServer{}
+func NewLaptopServer(db DB) *LaptopServer {
+	return &LaptopServer{db}
 }
 
 // CreateLaptop is a unary RPC to create a new laptop
 func (s *LaptopServer) CreateLaptop(ctx context.Context, req *pc.CreateLaptopRequest) (
 	*pc.CreateLaptopResponse, error) {
 	laptop := req.GetLaptop()
-	log.Printf("CreateLaptopRequest received with id: %s", laptop.Id)
+	log.Printf("CreateLaptopRequest received with id: %s", laptop.ID)
 
-	if len(laptop.Id) > 0 {
-		_, err := uuid.Parse(laptop.Id)
+	if len(laptop.ID) > 0 {
+		_, err := uuid.Parse(laptop.ID)
 		if err != nil {
 			return nil, status.Errorf(codes.InvalidArgument, "laptop id is not a valid uuid: %v", err)
 		}
@@ -38,8 +38,8 @@ func (s *LaptopServer) CreateLaptop(ctx context.Context, req *pc.CreateLaptopReq
 		if err != nil {
 			return nil, status.Errorf(codes.Internal, "cannot generate new laptop id: %v", err)
 		}
-		
-		laptop.Id = id.String()
+
+		laptop.ID = id.String()
 	}
 
 	err := s.DB.Save(laptop)
@@ -53,7 +53,7 @@ func (s *LaptopServer) CreateLaptop(ctx context.Context, req *pc.CreateLaptopReq
 		return nil, status.Errorf(code, "cannot save laptop to db: %v", err)
 	}
 
-	log.Printf("laptop saved with id: %s", laptop.Id)
-	res := &pc.CreateLaptopResponse{Id: laptop.Id}
+	log.Printf("laptop saved with id: %s", laptop.ID)
+	res := &pc.CreateLaptopResponse{ID: laptop.ID}
 	return res, nil
 }
