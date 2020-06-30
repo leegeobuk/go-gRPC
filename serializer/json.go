@@ -10,7 +10,7 @@ import (
 
 // ToJSON writes protocol buffer message to binary file
 func ToJSON(m proto.Message, filename string) error {
-	data, err := convertToJSON(m)
+	data, err := ConvertToJSON(m)
 
 	if err != nil {
 		return fmt.Errorf("cannot marshal proto message jo JSON: %w", err)
@@ -25,8 +25,8 @@ func ToJSON(m proto.Message, filename string) error {
 	return nil
 }
 
-// convertToJSON converts protocol buffer message to JSON string
-func convertToJSON(m proto.Message) (string, error) {
+// ConvertToJSON converts protocol buffer message to JSON string
+func ConvertToJSON(m proto.Message) (string, error) {
 	marshaler := jsonpb.Marshaler{
 		EnumsAsInts:  false,
 		EmitDefaults: true,
