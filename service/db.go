@@ -2,8 +2,10 @@ package service
 
 import (
 	"errors"
+	"fmt"
 	"sync"
 
+	"github.com/jinzhu/copier"
 	"github.com/leegeobuk/go-gRPC/proto/pc"
 )
 
@@ -15,6 +17,7 @@ var (
 // DB is an interface for storing laptops
 type DB interface {
 	Save(laptop *pc.Laptop) error
+	Find(id string) (*pc.Laptop, error)
 }
 
 // LaptopStore stores laptops
@@ -35,10 +38,30 @@ func (store *LaptopStore) Save(laptop *pc.Laptop) error {
 	store.mutex.Lock()
 	defer store.mutex.Unlock()
 
-	if store.data[laptop.Id] != nil {
+	if store.data[laptop.ID] != nil {
 		return ErrorExistingID
 	}
 
-	store.data[laptop.Id] = laptop
+	store.data[laptop.ID] = laptop
 	return nil
+}
+
+// Find finds the laptop with given id
+func (store *LaptopStore) Find(id string) (*pc.Laptop, error) {
+	store.mutex.RLock()
+	defer store.mutex.RUnlock()
+
+	laptop := store.data[id]
+	if laptop == nil {
+		return nil, nil
+	}
+
+	// deep copy
+	other := new(pc.Laptop)
+	err := copier.Copy(other, laptop)
+	if err != nil {
+		return nil, fmt.Errorf("cannot copy laptop data: %w", err)
+	}
+
+	return other, nil
 }
