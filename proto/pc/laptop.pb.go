@@ -26,7 +26,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type Laptop struct {
-	Id       string     `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ID       string     `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Brand    string     `protobuf:"bytes,2,opt,name=brand,proto3" json:"brand,omitempty"`
 	Name     string     `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`
 	Cpu      *CPU       `protobuf:"bytes,4,opt,name=cpu,proto3" json:"cpu,omitempty"`
@@ -74,7 +74,7 @@ var xxx_messageInfo_Laptop proto.InternalMessageInfo
 
 func (m *Laptop) GetId() string {
 	if m != nil {
-		return m.Id
+		return m.ID
 	}
 	return ""
 }
@@ -241,7 +241,7 @@ func (m *CreateLaptopRequest) GetLaptop() *Laptop {
 }
 
 type CreateLaptopResponse struct {
-	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
+	ID                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -274,7 +274,7 @@ var xxx_messageInfo_CreateLaptopResponse proto.InternalMessageInfo
 
 func (m *CreateLaptopResponse) GetId() string {
 	if m != nil {
-		return m.Id
+		return m.ID
 	}
 	return ""
 }
